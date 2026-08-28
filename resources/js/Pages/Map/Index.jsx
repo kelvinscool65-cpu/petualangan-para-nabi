@@ -77,7 +77,6 @@ export default function MapIndex({ prophets = [] }) {
     const progress = auth.progress || {};
     const activeNodeRef = useRef(null);
 
-    // Memastikan data nabi selalu mengambil dari database props, atau fallback menggunakan array nama asli
     const dataProphets = prophets.length > 0 ? prophets : LIST_NAMA_NABI.map((nama, i) => ({
         id: i + 1,
         urutan_nabi: i + 1,
@@ -146,19 +145,38 @@ export default function MapIndex({ prophets = [] }) {
         <AppLayout>
             <Head title="Peta Perjalanan Nabi" />
 
-            {/* Bagian Header Utama */}
+            {/* 🔥 MODIFIKASI: Header dengan Tombol Back dan Efek Lebih Mewah */}
             <div className="relative text-center pt-6 pb-8 px-4 z-20">
+                {/* Tombol Back - Diposisikan Absolute di Kiri Atas */}
+                <div className="absolute left-4 top-4 md:left-8 md:top-6 z-30">
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold text-amber-200/90 bg-black/60 backdrop-blur-sm border border-amber-500/40 rounded-xl hover:bg-amber-500/20 hover:border-amber-400 hover:scale-105 hover:shadow-[0_0_25px_rgba(234,179,8,0.3)] transition-all duration-300 group"
+                    >
+                        <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        <span className="hidden sm:inline">Kembali ke Beranda</span>
+                        <span className="sm:hidden">Kembali</span>
+                    </Link>
+                </div>
+
+                {/* Konten Header Utama (judul dan deskripsi) - tetap di tengah */}
                 <div className="text-yellow-400 font-serif text-lg md:text-xl tracking-widest mb-3 opacity-90 drop-shadow-[0_2px_10px_rgba(234,179,8,0.4)]">
                     بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
                 </div>
                 
-                <h1 className="text-3xl md:text-5xl font-black gold-shimmer mb-2 tracking-wide uppercase">
+                <h1 className="text-3xl md:text-5xl font-black gold-shimmer mb-2 tracking-wide uppercase relative inline-block">
                     Petualangan Para Nabi
+                    {/* 🔥 Tambahan dekorasi garis bawah emas */}
+                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></span>
                 </h1>
                 
-                <p className="text-sm md:text-base text-yellow-100/90 font-medium">
+                <p className="text-sm md:text-base text-yellow-100/90 font-medium mt-3">
                     Jelajahi kisah dan mukjizat 25 Nabi secara interaktif.
                 </p>
+
+                {/* 🔥 Tambahan elemen dekoratif: bintang kecil di kiri-kanan judul (untuk desktop) */}
+                <div className="hidden md:block absolute left-10 top-1/2 -translate-y-1/2 text-amber-500/30 text-4xl">✦</div>
+                <div className="hidden md:block absolute right-10 top-1/2 -translate-y-1/2 text-amber-500/30 text-4xl">✦</div>
             </div>
 
             {/* Container Peta Jalur Vertikal */}
@@ -253,7 +271,7 @@ export default function MapIndex({ prophets = [] }) {
                                 </div>
                             </div>
 
-                            {/* Node Tombol Utama - Menggunakan URL String Manual dengan Fallback */}
+                            {/* Node Tombol Utama */}
                             {isLocked ? (
                                 <div className="group relative focus:outline-none cursor-not-allowed">
                                     <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-slate-900/90 border-[4px] border-slate-700 shadow-[0_6px_0_#070e1b] opacity-70 grayscale">
@@ -262,7 +280,6 @@ export default function MapIndex({ prophets = [] }) {
                                 </div>
                             ) : (
                                 <Link 
-                                    // 🔥 Fallback: jika id tidak tersedia, gunakan urutan_nabi
                                     href={`/prophet/${prophet.id || prophet.urutan_nabi}/material`}
                                     className="group relative focus:outline-none transform hover:scale-110 transition-transform duration-300"
                                 >
