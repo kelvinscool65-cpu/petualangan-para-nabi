@@ -12,7 +12,7 @@
 
         <!-- Scripts & Styles -->
         @routes
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
         @inertiaHead
     </head>
     <body class="font-sans antialiased bg-night text-sand selection:bg-yellow-500 selection:text-gray-900">
