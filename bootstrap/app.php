@@ -11,16 +11,21 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void { // ->withMiddleware(function (Middleware $middleware): void {
-        // Menambahkan middleware Inertia dan preload assets ke grup 'web' //     $middleware->web(append: [
-        $middleware->web(append: [//         \App\Http\Middleware\HandleInertiaRequests::class,
-            \App\Http\Middleware\HandleInertiaRequests::class,//         \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
-            \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,//     ]);
-        ]);// })
+    ->withMiddleware(function (Middleware $middleware): void {
+        // 1. Percayai semua proxy (termasuk Load Balancer Railway, Cloudflare, dll.)
+        //    Ini penting agar URL yang dihasilkan menggunakan HTTPS dari proxy.
+        $middleware->trustProxies(at: '*');
+
+        // 2. Tambahkan middleware Inertia dan Link Preload ke grup web
+        $middleware->web(append: [
+            \App\Http\Middleware\HandleInertiaRequests::class,
+            \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        // Konfigurasi agar response JSON otomatis untuk request API atau yang meminta JSON
+        // 3. Kirim response JSON secara otomatis untuk request API atau yang meminta JSON
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
-    })->create();
+    })
+    ->create();
