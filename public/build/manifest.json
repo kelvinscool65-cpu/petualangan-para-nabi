@@ -1,4 +1,11 @@
 {
+  "_AppLayout-D_LY4DAh.js": {
+    "file": "assets/AppLayout-D_LY4DAh.js",
+    "name": "AppLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
   "_fonts-C9MNnjVw.css": {
     "file": "assets/fonts-C9MNnjVw.css",
     "src": "_fonts-C9MNnjVw.css"
@@ -36,10 +43,111 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
-  "resources/js/app.js": {
-    "file": "assets/app-BvRk9kiK.js",
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-D5lNc-CJ.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-CiAsHmTC.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Certificate/Show.jsx": {
+    "file": "assets/Show-qc8QJfi4.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Certificate/Show.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Conclusion/Show.jsx": {
+    "file": "assets/Show-C83M0gW2.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Conclusion/Show.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Map/Index.jsx": {
+    "file": "assets/Index-D6baZqJ-.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Map/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Prophet/Conclusion.jsx": {
+    "file": "assets/Conclusion-DwB7THS9.js",
+    "name": "Conclusion",
+    "src": "resources/js/Pages/Prophet/Conclusion.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Prophet/Material.jsx": {
+    "file": "assets/Material-BUoWny9x.js",
+    "name": "Material",
+    "src": "resources/js/Pages/Prophet/Material.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Quiz/Show.jsx": {
+    "file": "assets/Show-UgO-3nYZ.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Quiz/Show.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AppLayout-D_LY4DAh.js"
+    ]
+  },
+  "resources/js/Pages/Welcome.jsx": {
+    "file": "assets/Welcome-vsK5fgzB.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-B1VOqclB.js",
     "name": "app",
-    "src": "resources/js/app.js",
-    "isEntry": true
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Certificate/Show.jsx",
+      "resources/js/Pages/Conclusion/Show.jsx",
+      "resources/js/Pages/Map/Index.jsx",
+      "resources/js/Pages/Prophet/Conclusion.jsx",
+      "resources/js/Pages/Prophet/Material.jsx",
+      "resources/js/Pages/Quiz/Show.jsx",
+      "resources/js/Pages/Welcome.jsx"
+    ],
+    "css": [
+      "assets/app-B3BYKD3p.css"
+    ]
   }
 }
